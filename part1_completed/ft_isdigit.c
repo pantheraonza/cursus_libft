@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: criredon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/03 16:11:47 by criredon          #+#    #+#             */
+/*   Updated: 2026/06/03 16:11:49 by criredon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <ctype.h>
+#include <unistd.h>
+
+int	ft_isdigit(int c)
+{
+	unsigned char	unsigned_c;
+
+	unsigned_c = (unsigned char)c;
+	if (unsigned_c >= '0' && unsigned_c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+// int	main(void)
+// {
+// 	printf("Tests with Original & Replicated Functions\n");
+// 	printf("For OK expect nonzero or 1\n");
+// 	printf("Given '0': Orig %d | Repl %d\n", isdigit('0'), ft_isdigit('0'));
+// 	printf("Given '5': Orig %d | Repl %d\n", isdigit('5'), ft_isdigit('5'));
+// 	printf("For NOK expect 0\n");
+// 	printf("Given 'a': Orig %d | Repl %d\n", isdigit('a'), ft_isdigit('a'));
+// 	printf("Given '\\n': Orig %d | Repl %d\n", isdigit('\n'), ft_isdigit('\n'));
+// 	printf("Given NULL: Orig %d | Repl %d\n", isdigit('\0'), ft_isdigit('\0'));
+// 	printf("Given -1: Orig %d | Repl %d\n", isdigit(-1), ft_isdigit(-1));
+// 	printf("Given 256: Orig %d | Repl %d\n", isdigit(256), ft_isdigit(256));
+// 	return (0);
+// }
+
+// ******************************** M A N U A L ********************************
+// NAME & FAMILY
+// isdigit - character classification functions
+
+// SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
+// #include <ctype.h>
+// int isdigit(int c);
+
+// DESCRIPTION
+// isdigit() checks for a digit (0 through 9).
+
+// RETURN VALUES
+// The values returned are nonzero if the character c falls into the tested
+// class, and zero if not. For the purpose of 42 libft project, the return value
+// must be: 1 if the character meets the tested condition, 0 if not.
+
+// ERRORS
+// Not mentioned by the "man".
+
+// NOTES FROM THE MAN
+// The standards require that the argument c for these functions is either
+// EOF  or  a  value that  is  representable  in the type unsigned char. 
+// If the argument c is of type char, it must be cast to unsigned char.
+
+// EXTRA NOTES BY CRIREDON
+// To safely use the value of c inside the function, it must be cast to unsigned
+// char before comparing. This is necessary because the parameter c is of type
+// int, but it may originally come from a signed char, where values above 127
+// are stored as negative numbers. For example, the character 'é' has the value
+// 233 in extended ASCII, but in a system where char is signed, it gets stored
+// as -23. Casting to unsigned char converts that -23 back to 233, guaranteeing
+// that the value is always between 0 and 255, which is the valid range for any
+// real character. The cast syntax is: variable = (destin_type)source_value;
+
+// ******************************* M A N U A L ********************************
