@@ -71,11 +71,9 @@ size_t	ft_strlen(const char *s)
 //    guarantees that the function will not modify the string — a promise
 //    that the compiler enforces and that callers rely on.
 //
-// The use %zu for size_t in printf is because size_t's size varies by system
-// (e.g., 32/64-bit), unlike unsigned int. %zu ensures correct, portable output,
-// preventing undefined behavior when sizes mismatch.
-// Most commonly, printf will only read the lower-order bits of the size_t
-// value (32 bits) and interpret them as an unsigned int. If the size_t value
+// The use %zu for size_t in printf is because its size varies by system,
+// unlike unsigned int. %zu ensures correct, portable output, preventing
+// undefined behavior when sizes mismatch. If the size_t value
 // is larger than the maximum value an unsigned int can hold (4 billion),
 // the printed number will be incorrect and likely much smaller than expected.
 // ******************************* M A N U A L ********************************

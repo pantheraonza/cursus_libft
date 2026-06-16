@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include <unistd.h>
 
 int	ft_isalpha(int c)
 {
