@@ -16,16 +16,23 @@
 void *ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*ptr;
-	int				i;
+	size_t			i;
 
+	ptr = (unsigned char *)s;
 	i = 0;
 	while (n > 0 && i <= n)
 	{
-		s[i] = c;
+		ptr[i] = s[i];
 		i++;
 	}
-	s[] = '\0';
-	return (s);
+	ptr[] = '\0';
+	return (ptr);
+}
+
+int	main(void)
+{
+	ft_memset("Hello");
+	return (0);
 }
 
 /* ******************************* M A N U A L *********************************
@@ -40,7 +47,7 @@ DESCRIPTION
 The  memset()  function fills the first n bytes of the memory area pointed
 to by s with the constant byte c.
 
-RETURN VALUES
+RETURN VALUES & ERRORS
 The memset() function returns a pointer to the memory area s.
 
 EXTRA NOTES BY CRIREDON
