@@ -39,30 +39,30 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 int	main(void)
 {
-	char	d_orig_t1[20];
-	char	d_repl_t1[20];
-	char	d_orig_t2[20];
-	char	d_repl_t2[20];
-	char	d_orig_t3[20];
-	char	d_repl_t3[20];
+	char	dst_f_orig[20];
+	char	dst_f_repl[20];
 
-	strcpy(d_orig_t1, "Hello");
-	strcpy(d_repl_t1, "Hello");
-	strcpy(d_orig_t2, "42");
-	strcpy(d_repl_t2, "42");
-	strcpy(d_orig_t3, "");
-	strcpy(d_repl_t3, "");
-
-	printf("Tests with Original & Replicated Functions\n");
-	printf("Test 1: Append \" World\" into \"Hello\", size 20\n");
-	printf("Return Value: Orig %zu | Repl %zu\n",
-		strlcat(d_orig_t1, " World", 20), ft_strlcat(d_repl_t1, " World", 20));
-	printf("Result Content: Orig \"%s\" | Repl \"%s\"\n", d_orig_t1, d_repl_t1);
-	printf("Tests with Original & Replicated Functions\n");
-	printf("Test 1: Append \" World\" into \"Hello\", size 20\n");
-	printf("Return Value: Orig %zu | Repl %zu\n",
-		strlcat(d_orig_t1, " World", 20), ft_strlcat(d_repl_t1, " World", 20));
-	printf("Result Content: Orig \"%s\" | Repl \"%s\"\n", d_orig_t1, d_repl_t1);
+	strcpy(dst_f_orig, "Hello");
+	strcpy(dst_f_repl, "Hello");
+	printf("Tests with Original & Replicated Functions (Edge Cases)\n");
+	printf("************************************************************\n");
+	printf("Test 0 (Happy Path): Append \" World\" into \"Hello\", size 20\n");
+	printf("--> Return Value: Orig %zu | Repl %zu\n",
+		strlcat(dst_f_orig, " World", 20), ft_strlcat(dst_f_rep, " World", 20));
+	printf("--> Mod Buffer: Orig \"%s\" | Repl \"%s\"\n", dst_f_orig, dst_f_rep);
+	memset(dst_f_rep, 0, 20);
+	strcpy(dst_f_rep, "Hello");
+	printf("************************************************************\n");
+	printf("Test 1 (Truncation): Append \" World\" into \"Hello\", size 8\n");
+	printf("--> Return Value: Orig %zu | Repl %zu\n",
+		strlcat(dst_f_orig, " World", 8), ft_strlcat(dst_f_rep, " World", 8));
+	printf("--> Mod Buffer: Orig \"%s\" | Repl \"%s\"\n", dst_f_orig , dst_f_rep);
+	memset(dst_f_rep, 0, 20);
+	strcpy(dst_f_rep, "Hello");
+	printf("--> Truncation: Returned Value %zu vs Mod Buffer Size %zu\n",
+		ft_strlcat(d_repl_t1, " World", 8), strlen(dst_f_rep));
+	printf("************************************************************\n");
+	printf("Test 2 (Zero Size): Append \" World\" into \"Hello\", size 0\n");
 	return (0);
 }
 
