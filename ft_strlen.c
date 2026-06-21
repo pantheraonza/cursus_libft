@@ -42,7 +42,7 @@ size_t	ft_strlen(const char *s)
 // 	printf("Given NULL as an input for the Replicated Function: %zu\n",
 // 		ft_strlen(NULL));
 // 	printf("Given NULL as an input for the Original Function:\n");
-// 	printf("%zu", strlen(NULL));
+// 	printf("%zu\n", strlen(NULL));
 // 	return (0);
 // }
 
@@ -62,7 +62,11 @@ size_t	ft_strlen(const char *s)
 // strlen() returns the number of bytes in the string pointed to by s.
 
 // EXTRA NOTES BY CRIREDON
-// The function must not receive a NULL pointer (behaviour is undefined).
+// ATENTION!!! In order to show the difference between ft_strlen & strlen
+// please compile with the flag -Who-nonnull. It is recommended to exit
+// FISH and execute the program to show the "segmentation fault" error.
+//
+// This function must not receive a NULL pointer (behaviour is undefined).
 // 
 // Compared to the Piscine C04, two changes are required for libft:
 // 1. The return type is size_t, not int. size_t is an unsigned type large
@@ -71,6 +75,7 @@ size_t	ft_strlen(const char *s)
 //    guarantees that the function will not modify the string — a promise
 //    that the compiler enforces and that callers rely on.
 //
+// About the main:
 // The use %zu for size_t in printf is because its size varies by system,
 // unlike unsigned int. %zu ensures correct, portable output, preventing
 // undefined behavior when sizes mismatch. If the size_t value
