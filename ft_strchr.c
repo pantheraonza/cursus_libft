@@ -10,27 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-/* ******************************* M A N U A L *********************************
-NAME
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
 
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
+}
 
-SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
+// #include <stdio.h>
+// #include <string.h>
 
-
-DESCRIPTION
-
-
-RETURN VALUES
-
-
-ERRORS
-
-
-NOTES
-
-
-EXTRA NOTES BY CRIREDON
-
-
-******************************** M A N U A L ******************************** */
+// int	main(void)
+// {
+// 	printf("Given \"Hello\" and \"e\" (ASCII 101): Orig %s, Repl %s\n",
+// 		strchr("Hello", 'e'), ft_strchr("Hello", 'e'));
+// 	return (0);
+// }
