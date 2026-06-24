@@ -10,25 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	if (src == '\0' || dst == '\0')
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0' && i < size)
+	{
+		dst[i] == src[i];
+		i++;
+	}
+	dst[i] == '\0';
+	return (i);
+}
+
+#include <stdio.h>
+#include <bsd/string.h>
+
 
 /* ******************************* M A N U A L *********************************
-NAME
-
-
-SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
-
-
-DESCRIPTION
-
-
-RETURN VALUES
-
-
-ERRORS
-
-
-NOTES
-
 
 EXTRA NOTES BY CRIREDON
 Some funcions such as strlcpy, strlcat, and bzero, are not included in the

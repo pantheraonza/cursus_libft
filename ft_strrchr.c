@@ -1,70 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: criredon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 17:02:47 by criredon          #+#    #+#             */
-/*   Updated: 2026/06/10 17:02:48 by criredon         ###   ########.fr       */
+/*   Created: 2026/06/10 17:03:00 by criredon          #+#    #+#             */
+/*   Updated: 2026/06/10 17:03:01 by criredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
+		i++;
+	while (i >= 0)
 	{
 		if (s[i] == (char)c)
 			return ((char *)&s[i]);
-		i++;
+		i--;
 	}
-	if ((char)c == '\0')
-		return ((char *)&s[i]);
 	return (NULL);
 }
 
 // #include <stdio.h>
 // #include <string.h>
-//
+
 // int	main(void)
 // {
 // 	char	*str;
-//
-// 	str = "Hello World";
+
+// 	str = "hello world";
 // 	printf("Tests with Original & Replicated Functions (Edge Cases)\n");
 // 	printf("************************************************************\n");
-// 	printf("Test 0 (Happy path): Find 'o' in \"hello world\"\n");
-// 	printf("--> Orig %p | Repl %p\n", strchr(str, 'o'), ft_strchr(str, 'o'));
+// 	printf("Test 0 (Last match, 'l' appears 3 times)\n");
+// 	printf("--> Orig %p | Repl %p\n", strrchr(str, 'l'), ft_strrchr(str, 'l'));
 // 	printf("************************************************************\n");
-// 	printf("Test 1 (Search for '\\0', must return end pointer)\n");
-// 	printf("--> Orig %p | Repl %p\n", strchr(str, '\0'), ft_strchr(str, '\0'));
+// 	printf("Test 1 (Single occurrence): Find 'h'\n");
+// 	printf("--> Orig %p | Repl %p\n", strrchr(str, 'h'), ft_strrchr(str, 'h'));
 // 	printf("************************************************************\n");
-// 	printf("Test 2 (Char not present): Find 'z' in \"hello world\"\n");
-// 	printf("--> Orig %p | Repl %p\n", strchr(str, 'z'), ft_strchr(str, 'z'));
-// 	printf("************************************************************\n");
-// 	printf("Test 3 (Empty string, search for non-null char)\n");
-// 	printf("--> Orig %p | Repl %p\n", strchr("", 'a'), ft_strchr("", 'a'));
-// 	printf("************************************************************\n");
-// 	printf("Test 4 (c as int > 255, must be truncated like a char)\n");
+// 	printf("Test 2 (Search for '\\0', must return end pointer)\n");
 // 	printf("--> Orig %p | Repl %p\n",
-// 		strchr(str, 'o' + 256), ft_strchr(str, 'o' + 256));
+// 		strrchr(str, '\0'), ft_strrchr(str, '\0'));
+// 	printf("************************************************************\n");
+// 	printf("Test 3 (Char not present): Find 'z'\n");
+// 	printf("--> Orig %p | Repl %p\n", strrchr(str, 'z'), ft_strrchr(str, 'z'));
+// 	printf("************************************************************\n");
+// 	printf("Test 4 (Empty string, search for non-null char)\n");
+// 	printf("--> Orig %p | Repl %p\n", strrchr("", 'a'), ft_strrchr("", 'a'));
+// 	printf("************************************************************\n");
+// 	printf("Test 5 (Match is also the very last character)\n");
+// 	printf("--> Orig %p | Repl %p\n", strrchr(str, 'd'), ft_strrchr(str, 'd'));
 // 	return (0);
 // }
-
+//
 // ******************************** M A N U A L ********************************
 // SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
 // #include <string.h>
-// char *strchr(const char *s, int c);
+// char *strrchr(const char *s, int c);
 // DESCRIPTION
-// The strchr() function locates the first occurrence of c (converted
+// The strrchr() function locates the LAST occurrence of c (converted
 // to a char) in the string s. The terminating NULL byte is considered
 // part of the string, so searching for '\0' returns a pointer to it.
 // RETURN VALUES & ERRORS
-// Returns a pointer to the matched byte, or NULL if c does not occur
-// in s.
+// Returns a pointer to the matched byte,
+// or NULL if c does not occur in s.
 // ******************************* M A N U A L ********************************

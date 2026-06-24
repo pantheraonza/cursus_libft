@@ -39,12 +39,9 @@ int	ft_isascii(int c)
 // }
 
 // ******************************** M A N U A L ********************************
-// NAME
-// isascii — array of character test functions
 // SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
 // #include <ctype.h>
-// int
-// isascii(int c);
+// int isascii(int c);
 // DESCRIPTION
 // The isascii() function tests for an ASCII character, which is any
 // character with a value from 0 (zero) to 0x7F (127) inclusive.
@@ -52,30 +49,4 @@ int	ft_isascii(int c)
 // The values returned are nonzero if the character c falls into the
 // tested class, and zero if not. For libft purposes, the return value
 // must be exactly 1 if true, 0 if false.
-// EXTRA NOTES BY CRIREDON
-// How to build it?
-// 1. Compare c directly against the inclusive range [0, 127]. No table
-// lookup, no cast: c is checked as a plain int.
-// 2. Return 1 if both bounds hold, 0 otherwise.
-// Why does this function NOT cast c to unsigned char, unlike
-// ft_isalpha or ft_isdigit?
-// isascii() is the one is*() function defined for the FULL int domain,
-// not just for values representable as unsigned char. The check
-// c >= 0 already rejects every negative int directly — there is no
-// sign-extension trap to guard against, because we are not comparing
-// against a char-derived constant like 'A' or '0'. Casting here would
-// not change the result, but it would misrepresent what the function
-// is actually testing: a raw numeric range, not a character class.
-// Why is isascii() considered obsolete by some standards (POSIX)?
-// POSIX.1-2008 marks it obsolete because its result depends on how c
-// was produced upstream: if c came from a signed char above 127, it
-// arrives as a negative int and silently fails the test, even though
-// the original byte value (e.g. 233 for an accented letter) was never
-// outside the unsigned char range. Most other is*() functions defend
-// against this with an explicit cast; isascii() does not, by design,
-// since 0-127 IS the definition of ASCII regardless of signedness.
-// Is there any correlation with the Piscine content?
-// This function does not exist in the Piscine modules (C00-C04). It
-// is a new addition required directly by the libft Part 1 subject.
-//
 // ******************************* M A N U A L ********************************
