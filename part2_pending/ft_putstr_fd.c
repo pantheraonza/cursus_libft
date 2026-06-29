@@ -10,4 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
+	i = 0;
+	while (s[i] != '\0' && fd == 1)
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	s[i] = '\0';
+	if (fd != 1)
+		return (0);
+}
+
+int	main(void)
+
+{
+	char	*str;
+	
+
+	ft_putstr_fd(str, fd);
+	return (0);
+}
