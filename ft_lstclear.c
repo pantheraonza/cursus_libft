@@ -10,4 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*walker;
+	t_list	*next;
+
+	if (!lst || !del)
+		return ;
+	walker = *lst;
+	while (walker != NULL)
+	{
+		next = walker->next;
+		del(walker->content);
+		free(walker);
+		walker = next;
+	}
+	*lst = NULL;
+}
+
+// ******************************* M A N U A L ********************************
+// The function ft_lstclear DOES NOT modify nodes individually,
+// it deletes the ENTIRE linked list safely.
+//
+// t_list *walker			helper pointer used to walk through the list
+// t_list *next				temporary pointer to store next node safely
+// if (!lst || !del)		if list pointer or delete function does not exist
+// walker = *lst            start walking from the head of the list
+// while (walker != NULL)	iterate through all nodes until the end
+// next = walker->next		store next node before deleting current one
+// del(walker->content)		delete the content inside the node
+// free(walker)				free the current node itself
+// walker = next			move walker pointer to next node
+// *lst = NULL				set pointer to NULL after full deletion
+//
+// There are edge cases to take into account:
+// ft_lstclear will do nothing if lst == NULL (pointer does not exist),
+// *lst == NULL (empty list), or del == NULL (there is no valid function to
+// free the node's content).
+//
+// Other important things to know:
+// Must store "next" BEFORE freeing the node, otherwise the rest of the
+// list is lost (memory leak).
+// ******************************* M A N U A L ********************************

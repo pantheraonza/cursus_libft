@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	if (size == 0)
-		return(ft_strlen(src));
+		return (ft_strlen(src));
 	i = 0;
 	while (src[i] != '\0' && i < (size - 1))
 	{
@@ -55,7 +55,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 // 	printf("Orig dst: %s | Repl dst: %s\n", dst1, dst2);
 // 	return (0);
 // }
- 
+
 // ******************************** M A N U A L ********************************
 // SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)
 // #include <string.h>

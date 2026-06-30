@@ -33,12 +33,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 // #include <stdio.h>
 // #include <string.h>
 // #include <bsd/string.h>
-
+//
 // int	main(void)
 // {
 // 	char	dst_forig[20];
 // 	char	dst_frepl[20];
-
+//
 // 	strcpy(dst_forig, "Hello");
 // 	strcpy(dst_frepl, "Hello");
 // 	printf("Tests with Original & Replicated Functions (Edge Cases)\n");
@@ -104,7 +104,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 // 		dst_forig, dst_frepl);
 // 	return (0);
 // }
- 
+
 // ******************************** M A N U A L ********************************
 // ATENCIÓN! La función original NO hace NULL control!
 //
