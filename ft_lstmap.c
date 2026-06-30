@@ -15,25 +15,25 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*walker;
-	t_list	*newlist;
+	t_list	*newhead;
 	t_list	*newnode;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	walker = lst;
-	newlist = NULL;
+	newhead = NULL;
 	while (walker != NULL)
 	{
 		newnode = ft_lstnew(f(walker->content));
 		if (!newnode)
 		{
-			ft_lstclear(&newlist, del);
+			ft_lstclear(&newhead, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&newlist, newnode);
+		ft_lstadd_back(&newhead, newnode);
 		walker = walker->next;
 	}
-	return (newlist);
+	return (newhead);
 }
 
 // ******************************* M A N U A L ********************************
@@ -41,14 +41,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // It CREATES a NEW linked list by applying function 'f' to every node.
 //
 // t_list *walker			helper pointer to walk through the original list
-// t_list *newlist			head of the new linked list
+// t_list *newhead			head of the new linked list
 // t_list *newnode			new node created for the new list
 // if (!lst || !f || !del)	safety check
 // newlist = NULL			initialize the new linked list as empty
 // walker = lst				start the walk from the head of the original list
 // while (walker != NULL)	walk through every node until the end (NULL)
-// newnode = ft_lstnew		create a new node containing the content from 'f'
-// if (!newnode)			memory allocation failed
+// f(walker->content)		transform the data inside the original list
+// newnode = ft_lstnew()	create the newnode with new data
+// if (!newnode)			checks if memory allocation failed
 // ft_lstclear				free every node already created to avoid leaks
 // return (NULL)			stop because the new list cannot be completed
 // ft_lstadd_back			attach the new node at the end of the new list
@@ -58,4 +59,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // There are edge cases to take into account:
 // In case of a memory allocation failure, every previously created node is 
 // deleted to prevent memory leaks.
+// NEWHEAD as the returned value IS NOT the whole list, it represents the
+// pointer to the first node of the new list. As an analogy to arrays or
+// strings in C, where the returned pointer represents the address of the
+// first element, and from that starting point the entire structure can be
+// accessed through sequential traversal (either by index in arrays or by
+// next pointers in linked lists).
 // ******************************* M A N U A L ********************************

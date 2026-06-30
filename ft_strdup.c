@@ -15,15 +15,48 @@
 char	*ft_strdup(const char *s)
 {
 	size_t	i;
-	char	*str;
+	char	*newstr;
 
 	i = 0;
-	str = malloc *(ft_strlen(s));
+	newstr = malloc (ft_strlen(s) + 1);
+	if (!newstr)
+		return (NULL);
 	while (s[i] != '\0')
-		&str[i] = s[i];
-	&str[i] = '\0';
-	return (&str);
+	{
+		newstr[i] = s[i];
+		i++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+// 	char *str;
+// 	char *orig;
+// 	char *repl;
+
+// 	str = "Hello World";
+// 	printf("Tests with Original & Replicated Functions (Edge Cases)\n");
+// 	printf("************************************************************\n");
+// 	printf("Test 0 (Happy path): duplicate \"Hello World\"\n");
+// 	orig = strdup(str);
+// 	repl = ft_strdup(str);
+// 	printf("--> Orig %s | Repl %s\n", orig, repl);
+// 	free(orig);
+// 	free(repl);
+// 	printf("************************************************************\n");
+// 	printf("Test 1 (Empty string)\n");
+// 	orig = strdup("");
+// 	repl = ft_strdup("");
+// 	printf("--> Orig '%s' | Repl '%s'\n", orig, repl);
+// 	free(orig);
+// 	free(repl);
+// 	return (0);
+// }
 
 /* ******************************* M A N U A L *********************************
 // SYNOPSIS (LIBRARY & FUNCTION PROTOTYPE)

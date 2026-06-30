@@ -23,8 +23,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (walker != NULL)
 	{
 		next = walker->next;
-		del(walker->content);
-		free(walker);
+		ft_lstdelone(walker, del);
 		walker = next;
 	}
 	*lst = NULL;
@@ -40,8 +39,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 // walker = *lst            start walking from the head of the list
 // while (walker != NULL)	iterate through all nodes until the end
 // next = walker->next		store next node before deleting current one
-// del(walker->content)		delete the content inside the node
-// free(walker)				free the current node itself
+// ft_lstdelone(walker, del)delete current node using reusable function
 // walker = next			move walker pointer to next node
 // *lst = NULL				set pointer to NULL after full deletion
 //
